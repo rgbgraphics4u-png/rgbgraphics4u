@@ -1,1 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Graphics4u - Professional Printing & Advertising</title>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #2563eb; /* Blue */
+            --secondary: #f97316; /* Orange */
+            --dark: #1e293b;
+            --light: #f1f5f9;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #2563eb, #d946ef, #f97316);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --font-family: 'Poppins', sans-serif;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-family);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* --- HEADER / NAV --- */
+        header {
+            background: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px; /* Adjust size based on your logo */
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-call {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 80px 0;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            min-height: 70vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-visual img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services {
+            padding: 80px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-box {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* --- PORTFOLIO / ABOUT SECTION (Flex Layout) --- */
+        .featured-showcase {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .showcase-container {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-column {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .about-column {
+            flex: 1;
+            min-width: 300px;
+            background: var(--light);
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .about-column h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .about-column p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .team-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 0 20px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo-img {
+            height: 40px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        /* --- RESPONSIVE DESIGN (Mobile) --- */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow);
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-call {
+                display: none; /* Hide number on small screens in nav */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAV -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#">
+                    <!-- REPLACE 'logo.png' WITH YOUR ACTUAL LOGO FILE NAME -->
+                    <img src="logo.png" alt="RGB Graphics4u" class="logo-img">
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-call">
+                    <i class="fas fa-phone-alt"></i> 9905031942
+                </div>
+                <div class="mobile-menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bringing Your Brand to Life in Vibrant Color</h1>
+                <p>From concept to print, we are Patna's premier destination for high-impact advertising, signage, and corporate printing solutions.</p>
+                <a href="#contact" class="btn">Get a Free Quote</a>
+            </div>
+            <div class="hero-visual">
+                <!-- Large visual image mimicking the printer in the reference image -->
+                <img src="https://images.unsplash.com/photo-1593419455436-c6061c481f35?q=80&w=800&auto=format&fit=crop" alt="High-end printing press">
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p class="section-subtitle">We offer comprehensive printing and advertising services tailored to meet your business needs.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-print"></i></div>
+                    <h3>Flex Printing</h3>
+                    <p>High-resolution flex banners, hoardings, and backdrops for impactful outdoor advertising.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-id-card"></i></div>
+                    <h3>Visiting Cards</h3>
+                    <p>Premium quality, custom visiting cards with various finishes (matte, gloss, spot UV).</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Glow Signage</h3>
+                    <p>Eye-catching LED and acrylic glow sign boards to make your storefront visible 24/7.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-vector-square"></i></div>
+                    <h3>Vinyl Printing</h3>
+                    <p>Durable vinyl stickers, wall wraps, and vehicle branding solutions for mobile advertising.</p>
+                </div>
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-th-large"></i></div>
+                    <h3>ID Cards</h3>
+                    <p>Customized PVC ID cards for employees, students, and event access control.</p>
+                </div>
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-book-open"></i></div>
+                    <h3>Brochures &
