@@ -46,6 +46,48 @@
             padding: 0 20px;
         }
 
+        /* Top Announcement Bar */
+        .top-bar {
+            background: linear-gradient(90deg, #1e1b4b, #0f172a);
+            padding: 8px 0;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-bar-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-info span i {
+            color: var(--primary-cyan);
+            margin-right: 5px;
+        }
+
+        .top-bar-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .top-bar-social a {
+            color: var(--text-gray);
+            transition: color 0.3s;
+        }
+
+        .top-bar-social a:hover {
+            color: var(--primary-orange);
+        }
+
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
@@ -537,6 +579,21 @@
 </head>
 <body>
 
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-info">
+                <span><i class="fas fa-map-marker-alt"></i> Rajeev Nagar Road No. 10, Patna</span>
+                <span><i class="fas fa-phone-alt"></i> 9905031942</span>
+            </div>
+            <div class="top-bar-social">
+                <a href="https://www.facebook.com/rgbgraphics4u" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/rgbgraphics4u" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@anilmuz?si=bxYiuTQpS706y2dp" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
     <!-- Header & Nav -->
     <header>
         <div class="container">
@@ -801,10 +858,9 @@
                     <p style="color: var(--text-gray); font-size: 0.9rem;">Rajeev Nagar Road No. 10, Patna</p>
                 </div>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/rgbgraphics4u" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/rgbgraphics4u" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@anilmuz?si=bxYiuTQpS706y2dp" target="_blank"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <div class="copyright">
